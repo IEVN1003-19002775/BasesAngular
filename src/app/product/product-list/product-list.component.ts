@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProducto } from '../producto';
 
 @Component({
   selector: 'app-product-list',
@@ -8,7 +9,8 @@ import { Component } from '@angular/core';
 export class ProductListComponent {
   title = "Saluno de variable"
 
-  imageWidth: number = 50;
+  imageWidth: number = 200;
+  
   imageMargi: number = 2;
   muestraImg: boolean = true;
   listFilter: string = '';
@@ -17,7 +19,7 @@ export class ProductListComponent {
     this.muestraImg=!this.muestraImg;
   }
 
-  productos:any[] = [
+  productos:IProducto[] = [
     {
       "productoId": 1,
       "Modelo": 'Sentra',
