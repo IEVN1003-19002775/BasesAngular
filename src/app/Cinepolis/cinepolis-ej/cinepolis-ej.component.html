@@ -1,0 +1,45 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Joan Jafet Morales Ramos</a>
+        <a class="navbar-brand" href="#">IEVN-1003</a>
+      </div>
+    </nav>
+  </div>
+  <br>
+
+<div class="container-fluid">
+    <h1>Cinepolis</h1>
+    <div class="">
+        <label for="nombre">Ingresa tu nombre:</label><br>
+        <input type="text" id="nombre" [(ngModel)]="nombre"/>
+    </div>
+    <br>
+    <div>
+        <label for="personas">Cantidad de personas:</label><br>
+        <input type="number" id="personas" [(ngModel)]="personasCantidad" (ngModelChange)="MaxBoletos()"/>
+    </div>
+    <br>
+    <div>
+        <label for="boletos">Cantidad de boletos:</label><br>
+        <input type="number" id="boletos" [(ngModel)]="boletosCantidad" min="1" [max]="maxBoletos" />
+        <p *ngIf="boletosCantidad > maxBoletos">La cantidad de boletos máxima es {{ maxBoletos }}.</p>
+    </div>
+    <br>
+    <div>
+        <label for="cineco">¿Pagará con tarjeta CINECO?</label>
+        <input type="checkbox" id="cineco" [(ngModel)]="Cineco" />
+    </div>
+
+    <br>
+    
+    <button class="btn btn-outline-secondary" (click)="calcularPrecio()">Calcular Precio</button>
+
+    <br>
+  
+    <div *ngIf="precioF !== null">
+        <h4>Hola : {{ nombre }}</h4>
+      <p>El precio final a pagar es: {{ precioF | currency }}</p>
+    </div>
+  </div>
+  
