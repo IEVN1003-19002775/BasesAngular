@@ -1,5 +1,5 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Joan Jafet Morales Ramos</a>
         <a class="navbar-brand" href="#">IEVN-1003</a>
@@ -9,15 +9,16 @@
   <br>
 
 <div class="container-fluid">
-    <h1>Cinepolis</h1>
-    <div class="">
+    <h1>Cinépolis</h1>
+    <div>
         <label for="nombre">Ingresa tu nombre:</label><br>
         <input type="text" id="nombre" [(ngModel)]="nombre"/>
+        <p *ngIf="nombre == null">Ingresa un nombre.</p>
     </div>
     <br>
     <div>
         <label for="personas">Cantidad de personas:</label><br>
-        <input type="number" id="personas" [(ngModel)]="personasCantidad" (ngModelChange)="MaxBoletos()"/>
+        <input type="number" id="personas" min="1" [(ngModel)]="personasCantidad" (ngModelChange)="MaxBoletos()"/>
     </div>
     <br>
     <div>
@@ -33,13 +34,13 @@
 
     <br>
     
-    <button class="btn btn-outline-secondary" (click)="calcularPrecio()">Calcular Precio</button>
-
+    <button class="btn btn-outline-secondary" *ngIf="boletosCantidad <= maxBoletos && boletosCantidad > 0  && nombre != null" (click)="calcularPrecio()">Calcular Precio</button>
+    <p *ngIf="boletosCantidad > maxBoletos">La cantidad de boletos máxima es {{ maxBoletos }}.</p>
     <br>
   
-    <div *ngIf="precioF !== null">
-        <h4>Hola : {{ nombre }}</h4>
-      <p>El precio final a pagar es: {{ precioF | currency }}</p>
+    <div *ngIf="precioF !== null && nombre != null && boletosCantidad <= maxBoletos">
+        <h4 *ngIf=" nombre != null">Hola : {{ nombre }}</h4>
+      <p>El precio final a pagar es: ${{ precioF }}</p>
     </div>
   </div>
   

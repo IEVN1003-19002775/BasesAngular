@@ -7,19 +7,16 @@ import { Component } from '@angular/core';
 })
 export class CinepolisEjComponent {
 
-  nombre!:string;
+  nombre:string | null = null;
   boletosCantidad: number = 1;
   Cineco: boolean = false;
   precioF: number | null = null;
-  precioBol: number = 12000;
+  precioBol: number = 12;
   maxBoletos: number = 7;
   personasCantidad: number = 1;
 
   MaxBoletos(): void {
     this.maxBoletos = this.personasCantidad * 7;
-    if (this.boletosCantidad > this.maxBoletos) {
-      this.boletosCantidad = this.maxBoletos;
-    }
   }
 
   calcularPrecio(): void {

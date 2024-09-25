@@ -9,6 +9,7 @@ import { ProductoFilterPipe } from './product/producto-filter.pipe';
 import { OperasBasComponent } from './formularios/operas-bas/operas-bas.component';
 import { Ejemplo1Component } from './formularios/ejemplo1/ejemplo1.component';
 import { CinepolisEjComponent } from './Cinepolis/cinepolis-ej/cinepolis-ej.component';
+import { ResistenciaEjComponent } from './resistencia/resistencia-ej/resistencia-ej.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CinepolisEjComponent } from './Cinepolis/cinepolis-ej/cinepolis-ej.comp
     ProductoFilterPipe,
     OperasBasComponent,
     Ejemplo1Component,
-    CinepolisEjComponent
+    CinepolisEjComponent,
+    ResistenciaEjComponent
   ],
   imports: [
     BrowserModule,

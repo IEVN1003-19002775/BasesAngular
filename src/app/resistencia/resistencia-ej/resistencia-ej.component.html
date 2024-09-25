@@ -1,0 +1,93 @@
+<div class="container">
+    <h1 class="text-center mb-4">Calculadora de Resistencia</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="color1">Primera Banda</label>
+            <select class="form-control" [formGroup]="color1">
+                <option [(ngModel)]="ne" value="negro">Negro</option>
+                <option [(ngModel)]="ca" value="marron">Marrón</option>
+                <option [(ngModel)]="ro">Rojo</option>
+                <option [(ngModel)]="na" value="naranja">Naranja</option>
+                <option [(ngModel)]="am" value="amarillo">Amarillo</option>
+                <option [(ngModel)]="ve" value="verde">Verde</option>
+                <option [(ngModel)]="az" value="azul">Azul</option>
+                <option [(ngModel)]="vi" value="violeta">Violeta</option>
+                <option [(ngModel)]="gr" value="gris">Gris</option>
+                <option [(ngModel)]="bl" value="blanco">Blanco</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="color2">Segunda Banda</label>
+            <select class="form-control" [formGroup]="color2">
+                <option [(ngModel)]="ne" value="negro">Negro</option>
+                <option [(ngModel)]="ca" value="marron">Marrón</option>
+                <option [(ngModel)]="ro">Rojo</option>
+                <option [(ngModel)]="na" value="naranja">Naranja</option>
+                <option [(ngModel)]="am" value="amarillo">Amarillo</option>
+                <option [(ngModel)]="ve" value="verde">Verde</option>
+                <option [(ngModel)]="az" value="azul">Azul</option>
+                <option [(ngModel)]="vi" value="violeta">Violeta</option>
+                <option [(ngModel)]="gr" value="gris">Gris</option>
+                <option [(ngModel)]="bl" value="blanco">Blanco</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="color3">Tercera Banda</label>
+            <select class="form-control" [formGroup]="color3">
+                <option [(ngModel)]="neX" value="negro">Negro</option>
+                <option [(ngModel)]="caX" value="marron">Marrón</option>
+                <option [(ngModel)]="roX">Rojo</option>
+                <option [(ngModel)]="naX" value="naranja">Naranja</option>
+                <option [(ngModel)]="amX" value="amarillo">Amarillo</option>
+                <option [(ngModel)]="veX" value="verde">Verde</option>
+                <option [(ngModel)]="azX" value="azul">Azul</option>
+                <option [(ngModel)]="viX" value="violeta">Violeta</option>
+                <option [(ngModel)]="grX" value="gris">Gris</option>
+                <option [(ngModel)]="blX" value="blanco">Blanco</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label>Tolerancia</label>
+            <div class="form-check form-check-inline ml-3">
+                <input class="form-check-input" type="radio" name="tolerancia" id="oro" value="oro" checked>
+                <label class="form-check-label" for="oro">Oro</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tolerancia" id="plata" value="plata">
+                <label class="form-check-label" for="plata">Plata</label>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary registrar-btn">Registrar</button>
+
+    <table class="table table-bordered table-striped mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th>Color1</th>
+                <th>Color2</th>
+                <th>Color3</th>
+                <th>Tolerancia</th>
+                <th>Valor</th>
+                <th>Valor máximo</th>
+                <th>Valor mínimo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
