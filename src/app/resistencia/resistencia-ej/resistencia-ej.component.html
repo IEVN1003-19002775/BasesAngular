@@ -1,69 +1,50 @@
 <div class="container">
-    <h1 class="text-center mb-4">Calculadora de Resistencia</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Joan Jafet Morales Ramos</a>
+        <a class="navbar-brand" href="#">IEVN-1003</a>
+      </div>
+    </nav>
+</div>
+  <br>
 
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <label for="color1">Primera Banda</label>
-            <select class="form-control" [formGroup]="color1">
-                <option [(ngModel)]="ne" value="negro">Negro</option>
-                <option [(ngModel)]="ca" value="marron">Marrón</option>
-                <option [(ngModel)]="ro">Rojo</option>
-                <option [(ngModel)]="na" value="naranja">Naranja</option>
-                <option [(ngModel)]="am" value="amarillo">Amarillo</option>
-                <option [(ngModel)]="ve" value="verde">Verde</option>
-                <option [(ngModel)]="az" value="azul">Azul</option>
-                <option [(ngModel)]="vi" value="violeta">Violeta</option>
-                <option [(ngModel)]="gr" value="gris">Gris</option>
-                <option [(ngModel)]="bl" value="blanco">Blanco</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="color2">Segunda Banda</label>
-            <select class="form-control" [formGroup]="color2">
-                <option [(ngModel)]="ne" value="negro">Negro</option>
-                <option [(ngModel)]="ca" value="marron">Marrón</option>
-                <option [(ngModel)]="ro">Rojo</option>
-                <option [(ngModel)]="na" value="naranja">Naranja</option>
-                <option [(ngModel)]="am" value="amarillo">Amarillo</option>
-                <option [(ngModel)]="ve" value="verde">Verde</option>
-                <option [(ngModel)]="az" value="azul">Azul</option>
-                <option [(ngModel)]="vi" value="violeta">Violeta</option>
-                <option [(ngModel)]="gr" value="gris">Gris</option>
-                <option [(ngModel)]="bl" value="blanco">Blanco</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="color3">Tercera Banda</label>
-            <select class="form-control" [formGroup]="color3">
-                <option [(ngModel)]="neX" value="negro">Negro</option>
-                <option [(ngModel)]="caX" value="marron">Marrón</option>
-                <option [(ngModel)]="roX">Rojo</option>
-                <option [(ngModel)]="naX" value="naranja">Naranja</option>
-                <option [(ngModel)]="amX" value="amarillo">Amarillo</option>
-                <option [(ngModel)]="veX" value="verde">Verde</option>
-                <option [(ngModel)]="azX" value="azul">Azul</option>
-                <option [(ngModel)]="viX" value="violeta">Violeta</option>
-                <option [(ngModel)]="grX" value="gris">Gris</option>
-                <option [(ngModel)]="blX" value="blanco">Blanco</option>
-            </select>
-        </div>
+<div class="container">
+    <h1>Calculadora de Resistencia</h1>
+    
+    <div>
+      <label for="banda1">Banda 1:</label>
+      <select [(ngModel)]="banda1" id="banda1">
+        <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
+      </select>
     </div>
-
-    <div class="row mb-3">
-        <div class="col">
-            <label>Tolerancia</label>
-            <div class="form-check form-check-inline ml-3">
-                <input class="form-check-input" type="radio" name="tolerancia" id="oro" value="oro" checked>
-                <label class="form-check-label" for="oro">Oro</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tolerancia" id="plata" value="plata">
-                <label class="form-check-label" for="plata">Plata</label>
-            </div>
-        </div>
+    <br>
+    <div>
+      <label for="banda2">Banda 2:</label>
+      <select [(ngModel)]="banda2" id="banda2">
+        <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
+      </select>
     </div>
+    <br>
+    <div>
+        <label for="multiplicador">Multiplicador:</label>
+        <select [(ngModel)]="multiplicador" id="multiplicador">
+          <option *ngFor="let color of multiplicadores" [value]="color.valor">{{ color.nombre }}</option>
+        </select> 
+    </div>
+    <br>
+  <div>
+    <h3>Tolerancia:</h3>
+    <label>
+      <input type="checkbox" [(ngModel)]="toleranciaOro" (change)="toleranciaPlata = false"> Oro (5%)
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="toleranciaPlata" (change)="toleranciaOro = false"> Plata (10%)
+    </label>
+  </div>
+  <br>
+  <button (click)="calcular()">Calcular</button>
 
-    <button class="btn btn-primary registrar-btn">Registrar</button>
+  <h2 *ngIf="resultado !== ''">Resultado: {{ resultado }} Ohms</h2>
 
     <table class="table table-bordered table-striped mt-4">
         <thead class="thead-light">
@@ -79,15 +60,14 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td [ngStyle]="{'background-color': color1}">{{ color1 }}</td>
+                <td [ngStyle]="{'background-color': color2}">{{ color2 }}</td>
+                <td [ngStyle]="{'background-color': color3}">{{ color3 }}</td>
+                <td [ngStyle]="{'background-color': color4}">{{ tolerancia }}</td>
+                <td>{{resultado}}</td>
+                <td>{{valorMax}}</td>
+                <td>{{valorMin}}</td>
             </tr>
         </tbody>
     </table>
-</div>
     
