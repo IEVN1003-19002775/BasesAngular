@@ -46,6 +46,32 @@ export class ResistenciaEjComponent{
     9: 'white'
   };
 
+  nombres: { [key: number]: string } = {
+    0: 'Negro',
+    1: 'Café',
+    2: 'Rojo',
+    3: 'Naranja',
+    4: 'Amarillo',
+    5: 'Verde',
+    6: 'Azul',
+    7: 'Violeta',
+    8: 'Gris',
+    9: 'Blanco'
+  };
+
+  nombresM: { [key: number]: string } = {
+    1: 'Negro',
+    10: 'Café',
+    100: 'Rojo',
+    1000: 'Naranja',
+    10000: 'Amarillo',
+    100000: 'Verde',
+    1000000: 'Azul',
+    10000000: 'Violeta',
+    100000000: 'Gris',
+    1000000000: 'Blanco'
+  };
+
   colorMapM: { [key: number]: string } = {
     1: 'black',
     10: 'brown',
@@ -64,6 +90,11 @@ export class ResistenciaEjComponent{
     0.05: 'yellow',
     0.1: 'gray'
   };
+  nombresT: { [key: number]: string } = {
+    0: '',
+    0.05: 'Oro',
+    0.1: 'Plata'
+  };
 
 banda1: number = 0;
 banda2: number = 0;
@@ -78,6 +109,10 @@ color1: string | number = 0;
 color2: string | number = 0;
 color3: string | number = 0;
 color4: string | number = 0;
+nombre1: string | number= '';
+nombre2: string | number= '';
+nombre3: string | number= '';
+nombre4: string | number= '';
 
 
 calcular() {
@@ -95,9 +130,16 @@ calcular() {
   this.valorMin = valorMin;
 
   this.color1 = this.colorMap[this.banda1] || this.banda1;
+  this.nombre1 = this.nombres[this.banda1] || this.banda1;
+
   this.color2 = this.colorMap[this.banda2] || this.banda2;
+  this.nombre2 = this.nombres[this.banda2] || this.banda2;
+
   this.color3 = this.colorMapM[this.multiplicador] || this.multiplicador;
+  this.nombre3 = this.nombresM[this.multiplicador] || this.multiplicador;
+
   this.color4 = this.colorMapT[this.tolerancia] || this.tolerancia;
+  this.nombre4 = this.nombresT[this.tolerancia] || this.tolerancia;
 }
 
 }

@@ -16,17 +16,11 @@
       <select [(ngModel)]="banda1" id="banda1">
         <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
       </select>
-    </div>
-    <br>
-    <div>
       <label for="banda2">Banda 2:</label>
       <select [(ngModel)]="banda2" id="banda2">
         <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
       </select>
-    </div>
-    <br>
-    <div>
-        <label for="multiplicador">Multiplicador:</label>
+      <label for="multiplicador">Multiplicador:</label>
         <select [(ngModel)]="multiplicador" id="multiplicador">
           <option *ngFor="let color of multiplicadores" [value]="color.valor">{{ color.nombre }}</option>
         </select> 
@@ -42,7 +36,7 @@
     </label>
   </div>
   <br>
-  <button (click)="calcular()">Calcular</button>
+  <button class="btn btn-outline-secondary" (click)="calcular()">Calcular</button>
 
   <h2 *ngIf="resultado !== ''">Resultado: {{ resultado }} Ohms</h2>
 
@@ -51,7 +45,7 @@
             <tr>
                 <th>Color1</th>
                 <th>Color2</th>
-                <th>Color3</th>
+                <th>Multiplicador</th>
                 <th>Tolerancia</th>
                 <th>Valor</th>
                 <th>Valor máximo</th>
@@ -60,10 +54,10 @@
         </thead>
         <tbody>
             <tr>
-                <td [ngStyle]="{'background-color': color1}">{{ color1 }}</td>
-                <td [ngStyle]="{'background-color': color2}">{{ color2 }}</td>
-                <td [ngStyle]="{'background-color': color3}">{{ color3 }}</td>
-                <td [ngStyle]="{'background-color': color4}">{{ tolerancia }}</td>
+                <td [ngStyle]="{'background-color': color1}">{{ nombre1 }}</td>
+                <td [ngStyle]="{'background-color': color2}">{{ nombre2 }}</td>
+                <td [ngStyle]="{'background-color': color3}">{{ nombre3 }}</td>
+                <td [ngStyle]="{'background-color': color4}">{{ nombre4 }}</td>
                 <td>{{resultado}}</td>
                 <td>{{valorMax}}</td>
                 <td>{{valorMin}}</td>
