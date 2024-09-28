@@ -7,40 +7,39 @@
     </nav>
 </div>
   <br>
-
-<div class="container">
-    <h1>Calculadora de Resistencia</h1>
-    
+  <h1>Calculadora de Resistencia</h1>
+  <form [formGroup]="formulario">
     <div>
       <label for="banda1">Banda 1:</label>
-      <select [(ngModel)]="banda1" id="banda1">
+      <select formControlName="banda1">
         <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
       </select>
       <label for="banda2">Banda 2:</label>
-      <select [(ngModel)]="banda2" id="banda2">
+      <select formControlName="banda2">
         <option *ngFor="let color of colores" [value]="color.valor">{{ color.nombre }}</option>
       </select>
       <label for="multiplicador">Multiplicador:</label>
-        <select [(ngModel)]="multiplicador" id="multiplicador">
+        <select formControlName="multiplicador">
           <option *ngFor="let color of multiplicadores" [value]="color.valor">{{ color.nombre }}</option>
         </select> 
     </div>
     <br>
-  <div>
-    <h3>Tolerancia:</h3>
-    <label>
-      <input type="checkbox" [(ngModel)]="toleranciaOro" (change)="toleranciaPlata = false"> Oro (5%)
-    </label>
-    <label>
-      <input type="checkbox" [(ngModel)]="toleranciaPlata" (change)="toleranciaOro = false"> Plata (10%)
-    </label>
+    <div>
+      <h3>Tolerancia:</h3>
+      <label>
+        <input type="radio" formControlName="tolerancia" [value]="'oro'"> Oro (5%)
+      </label>
+      <label>
+        <input type="radio" formControlName="tolerancia" [value]="'plata'"> Plata (10%)
+      </label>
   </div>
   <br>
-  <button class="btn btn-outline-secondary" (click)="calcular()">Calcular</button>
+  <button class="btn btn-outline-secondary" type="submit" (click)="calcular()">Calcular</button>
+  </form>
 
-  <h2 *ngIf="resultado !== ''">Resultado: {{ resultado }} Ohms</h2>
+  <h2 *ngIf="resultado !== 0">Resultado: {{ resultado }} Ohms</h2>
 
-    <table class="table table-bordered table-striped mt-4">
+    <table *ngIf="resultado !== 0" class="table table-bordered table-striped mt-4">
         <thead class="thead-light">
             <tr>
                 <th>Color1</th>

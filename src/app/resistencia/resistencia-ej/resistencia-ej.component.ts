@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-resistencia-ej',
@@ -96,50 +97,74 @@ export class ResistenciaEjComponent{
     0.1: 'Plata'
   };
 
-banda1: number = 0;
-banda2: number = 0;
-multiplicador: number = 0;
-toleranciaOro: boolean = false;
-toleranciaPlata: boolean = false;
-tolerancia: number = 0;
-resultado: string = '';
-valorMax: number = 0;
-valorMin: number = 0;
-color1: string | number = 0;
-color2: string | number = 0;
-color3: string | number = 0;
-color4: string | number = 0;
-nombre1: string | number= '';
-nombre2: string | number= '';
-nombre3: string | number= '';
-nombre4: string | number= '';
+
+  formulario!:FormGroup;
+  resultado:string | number = 0;
+
+  constructor(){}
+  ngOnInit(): void {
+    this.formulario = new FormGroup({
+      banda1: new FormControl(0, Validators.required),
+      banda2: new FormControl(0, Validators.required),
+      multiplicador: new FormControl(0, Validators.required),
+      tolerancia: new FormControl('', Validators.required),
+
+    });
+  }
+
+  tolerancia:number = 0;
+  valorMax: number = 0;
+  valorMin: number = 0;
+  color1: string | number = 0;
+  color2: string | number = 0;
+  color3: string | number = 0;
+  color4: string | number = 0;
+  nombre1: string | number= '';
+  nombre2: string | number= '';
+  nombre3: string | number= '';
+  nombre4: string | number= '';
+
+  calcular(): void{
+    const banda1 = this.formulario.get('banda1')?.value;
+    const banda2 = this.formulario.get('banda2')?.value;
+    const multiplicador = this.formulario.get('multiplicador')?.value;
+    const tolerancia = this.formulario.get('tolerancia')?.value;
 
 
-calcular() {
-
-  const valor = (this.banda1 + this.banda2) * this.multiplicador;
-
-  this.tolerancia = this.toleranciaOro ? 0.05 : this.toleranciaPlata ? 0.1 : 0;
   
-  this.resultado = `${valor}`;
 
-  const valorMax = valor + (valor * this.tolerancia);
-  this.valorMax = valorMax;
+    if (tolerancia == 'oro'){
+      this.tolerancia = .05;
+      
+  }
+  else if (tolerancia == 'plata'){
+      this.tolerancia = .1;
+  }
+  else {
+    this.tolerancia= 0;
+  }
+    
+    const valor = (banda1 + banda2) * multiplicador;
+    
+    this.resultado = `${valor}`;
 
-  const valorMin = valor - (valor * this.tolerancia);
-  this.valorMin = valorMin;
+    const valorMax = valor + (valor * this.tolerancia);
+    this.valorMax = valorMax;
 
-  this.color1 = this.colorMap[this.banda1] || this.banda1;
-  this.nombre1 = this.nombres[this.banda1] || this.banda1;
+    const valorMin = valor - (valor * this.tolerancia);
+    this.valorMin = valorMin;
 
-  this.color2 = this.colorMap[this.banda2] || this.banda2;
-  this.nombre2 = this.nombres[this.banda2] || this.banda2;
+    this.color1 = this.colorMap[banda1] || banda1;
+    this.nombre1 = this.nombres[banda1] || banda1;
 
-  this.color3 = this.colorMapM[this.multiplicador] || this.multiplicador;
-  this.nombre3 = this.nombresM[this.multiplicador] || this.multiplicador;
+    this.color2 = this.colorMap[banda2] || banda2;
+    this.nombre2 = this.nombres[banda2] || banda2;
 
-  this.color4 = this.colorMapT[this.tolerancia] || this.tolerancia;
-  this.nombre4 = this.nombresT[this.tolerancia] || this.tolerancia;
-}
+    this.color3 = this.colorMapM[multiplicador] || multiplicador;
+    this.nombre3 = this.nombresM[multiplicador] || multiplicador;
+
+    this.color4 = this.colorMapT[this.tolerancia] || this.tolerancia;
+    this.nombre4 = this.nombresT[this.tolerancia] || this.tolerancia;
+  }
 
 }
